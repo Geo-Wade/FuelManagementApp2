@@ -18,7 +18,6 @@ public class FuelingManagerIMPL implements FuelingManager {
     public void startFueling() {
         Transaction transaction = new Transaction();
         transaction.setFuelingPosition(fuelingAuthorizer.authorizeFuelingPosition().getFuelingPositionNumber());
-        System.out.println("Fueling Position is: " + transaction.getFuelingPosition());
         transactionManager.addActiveTransaction(transaction);
         externalFuelingTaskManager.startFueling(transaction.getFuelingPosition());
     }

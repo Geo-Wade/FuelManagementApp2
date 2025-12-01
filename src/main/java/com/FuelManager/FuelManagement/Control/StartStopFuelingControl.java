@@ -30,7 +30,7 @@ public class StartStopFuelingControl implements CLIControl {
         } catch (InvalidInputException e) {
             e.printStackTrace();
         } catch (AuthorizationFailedException e) {
-            throw new AuthorizationFailedException("Failed to Authorize")
+            throw new AuthorizationFailedException("Failed to Authorize");
         }
     }
 }
