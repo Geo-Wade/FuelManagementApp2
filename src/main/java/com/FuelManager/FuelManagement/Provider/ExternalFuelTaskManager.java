@@ -4,6 +4,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public interface ExternalFuelTaskManager {
-    public void startFueling(int fuelingPosition);
-    public void stopFueling(int fuelingPositions);
+    void startFueling(int fuelingPosition);
+    void stopFueling(int fuelingPositions);
 }

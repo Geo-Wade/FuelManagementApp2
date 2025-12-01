@@ -1,11 +1,7 @@
 package com.FuelManager.FuelManagement.Provider;
 
 import com.FuelManager.FuelManagement.Services.TransactionCompleted;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

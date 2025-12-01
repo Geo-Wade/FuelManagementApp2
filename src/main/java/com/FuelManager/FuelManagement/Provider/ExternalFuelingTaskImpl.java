@@ -1,6 +1,5 @@
 package com.FuelManager.FuelManagement.Provider;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.CompletableFuture;
@@ -28,10 +27,6 @@ public class ExternalFuelingTaskImpl implements ExternalFuelingTask {
         }
         long endTime = System.currentTimeMillis();
         amount.complete((endTime - startTime) / 1000.0);
-    }
-
-    public void stop() {
-        stopSignal = true;
     }
 
     public void setFuelingPosition(int fuelingPosition) {

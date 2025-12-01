@@ -2,8 +2,6 @@ package com.FuelManager.FuelManagement.Control;
 
 import com.FuelManager.FuelManagement.Exceptions.AuthorizationFailedException;
 import com.FuelManager.FuelManagement.Exceptions.InvalidInputException;
-import com.FuelManager.FuelManagement.Services.FuelingAuthorizer;
-import com.FuelManager.FuelManagement.Services.FuelingAuthorizerImpl;
 import com.FuelManager.FuelManagement.Services.FuelingManager;
 import org.springframework.stereotype.Component;
 
@@ -32,7 +30,7 @@ public class StartStopFuelingControl implements CLIControl {
         } catch (InvalidInputException e) {
             e.printStackTrace();
         } catch (AuthorizationFailedException e) {
-
+            throw new AuthorizationFailedException("Failed to Authorize")
         }
     }
 }

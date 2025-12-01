@@ -2,14 +2,13 @@ package com.FuelManager.FuelManagement.Services;
 
 import com.FuelManager.FuelManagement.Model.Transaction;
 import com.FuelManager.FuelManagement.Repository.TransactionRepo;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.ConcurrentHashMap;
 
 @Service
 public class TransactionManagerIMPL implements TransactionManager{
-    private ConcurrentHashMap<Integer, Transaction> activeTransactions = new ConcurrentHashMap<>();
+    final private ConcurrentHashMap<Integer, Transaction> activeTransactions = new ConcurrentHashMap<>();
     TransactionRepo transactionRepo;
 
     TransactionManagerIMPL(TransactionRepo transactionRepo) {

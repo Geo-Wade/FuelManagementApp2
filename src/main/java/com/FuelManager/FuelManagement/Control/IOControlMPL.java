@@ -21,6 +21,6 @@ public class IOControlMPL implements IOControl {
         throw new InvalidInputException("The Response has generated an error");
     }
     public String stringHandler(String message) {
-        return new String();
+        return "";
     }
 }
