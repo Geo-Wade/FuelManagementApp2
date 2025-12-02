@@ -25,4 +25,9 @@ public class IOControlmpl implements IOControl {
         String response = scanner.nextLine();
         return response.trim();
     }
+
+    @Override
+    public void println(String message) {
+        System.out.println(message);
+    }
 }

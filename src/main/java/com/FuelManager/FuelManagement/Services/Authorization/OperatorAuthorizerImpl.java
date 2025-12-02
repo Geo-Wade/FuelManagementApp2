@@ -1,11 +1,12 @@
-package com.FuelManager.FuelManagement.Services;
+package com.FuelManager.FuelManagement.Services.Authorization;
 
 import com.FuelManager.FuelManagement.Model.Operator;
 import com.FuelManager.FuelManagement.Repository.OperatorRepo;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-
-public class OperatorAuthorizerImpl implements OperatorAuthorizer{
+@Service
+public class OperatorAuthorizerImpl implements OperatorAuthorizer {
     OperatorRepo operatorRepo;
     OperatorAuthorizerImpl(OperatorRepo operatorRepo) {
         this.operatorRepo = operatorRepo;

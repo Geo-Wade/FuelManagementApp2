@@ -6,4 +6,5 @@ import org.springframework.stereotype.Component;
 public interface IOControl {
     int intHandler(String message);
     String stringHandler(String message);
+    void println(String message);
 }

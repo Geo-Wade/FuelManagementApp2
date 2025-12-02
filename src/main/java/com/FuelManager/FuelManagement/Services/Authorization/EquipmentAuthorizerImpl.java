@@ -1,4 +1,4 @@
-package com.FuelManager.FuelManagement.Services;
+package com.FuelManager.FuelManagement.Services.Authorization;
 
 import com.FuelManager.FuelManagement.Model.Equipment;
 import com.FuelManager.FuelManagement.Repository.EquipmentRepo;
@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 @Service
-public class EquipmentAuthorizerImpl implements EquipmentAuthorizer{
+public class EquipmentAuthorizerImpl implements EquipmentAuthorizer {
     EquipmentRepo equipmentRepo;
     EquipmentAuthorizerImpl(EquipmentRepo equipmentRepo) {
         this.equipmentRepo = equipmentRepo;

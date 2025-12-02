@@ -1,4 +1,4 @@
-package com.FuelManager.FuelManagement.Services;
+package com.FuelManager.FuelManagement.Services.Authorization;
 
 import org.springframework.stereotype.Service;
 

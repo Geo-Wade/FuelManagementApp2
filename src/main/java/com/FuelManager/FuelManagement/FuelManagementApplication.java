@@ -4,8 +4,10 @@ import com.FuelManager.FuelManagement.Control.CLIControl;
 import com.FuelManager.FuelManagement.Control.StartStopFuelingControl;
 import com.FuelManager.FuelManagement.Model.Equipment;
 import com.FuelManager.FuelManagement.Model.FuelingPosition;
+import com.FuelManager.FuelManagement.Model.Operator;
 import com.FuelManager.FuelManagement.Repository.EquipmentRepo;
 import com.FuelManager.FuelManagement.Repository.FuelingPositionRepo;
+import com.FuelManager.FuelManagement.Repository.OperatorRepo;
 import com.FuelManager.FuelManagement.Services.TransactionManager;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,9 +23,9 @@ public class FuelManagementApplication {
 
 		EquipmentRepo equipmentRepo = applicationContext.getBean(EquipmentRepo.class);
 
-		FuelingPositionRepo fuelingPositionRepo = applicationContext.getBean(FuelingPositionRepo.class);
+		OperatorRepo operatorRepo = applicationContext.getBean(OperatorRepo.class);
 
-		TransactionManager transactionManager = applicationContext.getBean(TransactionManager.class);
+		FuelingPositionRepo fuelingPositionRepo = applicationContext.getBean(FuelingPositionRepo.class);
 
 		FuelingPosition fp1 = new FuelingPosition();
 		fp1.setFuelingPositionNumber(1);
@@ -51,6 +53,12 @@ public class FuelManagementApplication {
 		e1.setEquipmentOdometer(25000);
 
 		equipmentRepo.save(e1);
+
+		Operator o1 = new Operator();
+		o1.setOperatorID("4321");
+		o1.setOperatorFirstName("John");
+		o1.setOperatorLastName("Doe");
+		operatorRepo.save(o1);
 
 		while(true) {
 			startStopFueling.execute();
