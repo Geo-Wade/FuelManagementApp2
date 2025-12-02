@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import java.util.Scanner;
 
 @Component
-public class IOControlMPL implements IOControl {
+public class IOControlmpl implements IOControl {
     Scanner scanner = new Scanner(System.in);
     boolean invalidResponse = true;
     public int intHandler(String message) {
@@ -21,6 +21,8 @@ public class IOControlMPL implements IOControl {
         throw new InvalidInputException("The Response has generated an error");
     }
     public String stringHandler(String message) {
-        return "";
+        System.out.println(message);
+        String response = scanner.nextLine();
+        return response.trim();
     }
 }

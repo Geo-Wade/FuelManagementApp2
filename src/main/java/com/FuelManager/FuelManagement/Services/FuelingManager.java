@@ -1,9 +1,9 @@
 package com.FuelManager.FuelManagement.Services;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public interface FuelingManager {
-    void startFueling();
+    void startFueling(int fuelingPosition);
     void stopFueling(int fuelingPosition);
 }

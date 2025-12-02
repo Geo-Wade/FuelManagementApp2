@@ -1,8 +1,8 @@
 package com.FuelManager.FuelManagement.Services;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public interface TransactionCompleted {
     void completeAndSaveTransaction(int fuelingPosition, double amountFueled);
 

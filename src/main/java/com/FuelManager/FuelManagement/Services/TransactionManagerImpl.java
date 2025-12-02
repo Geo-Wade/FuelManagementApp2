@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Service
-public class TransactionManagerIMPL implements TransactionManager{
+public class TransactionManagerImpl implements TransactionManager{
     final private ConcurrentHashMap<Integer, Transaction> activeTransactions = new ConcurrentHashMap<>();
     TransactionRepo transactionRepo;
 
-    TransactionManagerIMPL(TransactionRepo transactionRepo) {
+    TransactionManagerImpl(TransactionRepo transactionRepo) {
         this.transactionRepo = transactionRepo;
     }
 
@@ -24,5 +24,10 @@ public class TransactionManagerIMPL implements TransactionManager{
     }
     public void finalizeActiveTransaction(int fuelingPosition) {
         transactionRepo.save(activeTransactions.remove(fuelingPosition));
+    }
+
+    @Override
+    public boolean hasActiveTransaction(int fuelingPosition) {
+        return activeTransactions.containsKey(fuelingPosition);
     }
 }
