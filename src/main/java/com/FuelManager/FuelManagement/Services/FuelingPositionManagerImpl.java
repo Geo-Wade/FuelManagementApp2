@@ -2,13 +2,9 @@ package com.FuelManager.FuelManagement.Services;
 
 import com.FuelManager.FuelManagement.Model.FuelingPosition;
 import com.FuelManager.FuelManagement.Model.Product;
-import com.FuelManager.FuelManagement.Model.Transaction;
 import com.FuelManager.FuelManagement.Repository.FuelingPositionRepo;
 import org.springframework.stereotype.Service;
-
-import java.util.Arrays;
 import java.util.List;
-import java.util.function.Predicate;
 
 @Service
 public class FuelingPositionManagerImpl implements FuelingPositionManager{

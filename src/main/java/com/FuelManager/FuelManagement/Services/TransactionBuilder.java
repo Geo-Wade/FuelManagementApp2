@@ -1,6 +1,5 @@
 package com.FuelManager.FuelManagement.Services;
 
-import com.FuelManager.FuelManagement.Model.Equipment;
 import com.FuelManager.FuelManagement.Model.Transaction;
 import org.springframework.stereotype.Service;
 

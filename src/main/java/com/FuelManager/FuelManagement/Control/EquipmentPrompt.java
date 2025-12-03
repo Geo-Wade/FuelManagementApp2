@@ -14,7 +14,6 @@ public class EquipmentPrompt implements CLIControl{
     TransactionBuilder transactionBuilder;
     EquipmentRepo equipmentRepo;
     EquipmentPrompt(IOControl ioControl,
-                    EquipmentAuthorizer equipmentAuthorizer,
                     OperatorPrompt operatorPrompt,
                     TransactionBuilder transactionBuilder,
                     EquipmentRepo equipmentRepo) {

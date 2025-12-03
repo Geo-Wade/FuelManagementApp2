@@ -10,13 +10,10 @@ import com.FuelManager.FuelManagement.Repository.EquipmentRepo;
 import com.FuelManager.FuelManagement.Repository.FuelingPositionRepo;
 import com.FuelManager.FuelManagement.Repository.OperatorRepo;
 import com.FuelManager.FuelManagement.Repository.ProductRepo;
-import com.FuelManager.FuelManagement.Services.TransactionManager;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @SpringBootApplication
