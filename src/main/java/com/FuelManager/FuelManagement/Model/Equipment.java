@@ -1,7 +1,9 @@
 package com.FuelManager.FuelManagement.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Equipment {
@@ -11,6 +13,8 @@ public class Equipment {
     String equipmentModel;
     int equipmentYear;
     int equipmentOdometer;
+    @ManyToMany(fetch = FetchType.EAGER)
+    List<Product> products;
 
     public String getId() {
         return id;
@@ -50,6 +54,14 @@ public class Equipment {
 
     public void setEquipmentOdometer(int equipmentOdometer) {
         this.equipmentOdometer = equipmentOdometer;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 
     @Override

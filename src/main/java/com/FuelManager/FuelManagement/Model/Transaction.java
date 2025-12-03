@@ -1,9 +1,6 @@
 package com.FuelManager.FuelManagement.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
@@ -14,7 +11,8 @@ public class Transaction {
     int TransactionID;
     LocalDateTime transactionTime;
     String operatorID;
-    String equipmentID;
+    @OneToOne
+    Equipment equipment;
     int fuelingPosition;
     double amountFueled;
 
@@ -34,12 +32,12 @@ public class Transaction {
         this.operatorID = operatorID;
     }
 
-    public String getEquipmentID() {
-        return equipmentID;
+    public Equipment getEquipment() {
+        return equipment;
     }
 
-    public void setEquipmentID(String equipmentID) {
-        this.equipmentID = equipmentID;
+    public void setEquipment(Equipment equipment) {
+        this.equipment = equipment;
     }
 
     public int getFuelingPosition() {
@@ -54,8 +52,8 @@ public class Transaction {
         return amountFueled;
     }
 
-    public void setAmountFueled(double amoungFueled) {
-        this.amountFueled = amoungFueled;
+    public void setAmountFueled(double amountFueled) {
+        this.amountFueled = amountFueled;
     }
 
     public int getTransactionID() {
@@ -72,7 +70,7 @@ public class Transaction {
                 "TransactionID=" + TransactionID +
                 ", transactionTime=" + transactionTime +
                 ", operatorID='" + operatorID + '\'' +
-                ", equipmentID='" + equipmentID + '\'' +
+                ", equipmentID='" + equipment + '\'' +
                 ", fuelingPosition=" + fuelingPosition +
                 ", amountFueled=" + amountFueled +
                 '}';

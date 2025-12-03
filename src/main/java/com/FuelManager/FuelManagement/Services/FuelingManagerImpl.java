@@ -13,6 +13,7 @@ public class FuelingManagerImpl implements FuelingManager {
         this.transactionManager = transactionManager;
     }
     public void startFueling(int fuelingPositionId) {
+
         externalFuelingTaskManager.startFueling(fuelingPositionId);
     }
 

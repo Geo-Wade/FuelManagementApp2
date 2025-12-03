@@ -1,5 +1,7 @@
 package com.FuelManager.FuelManagement.Control;
 
+import com.FuelManager.FuelManagement.Exceptions.AuthorizationFailedException;
+import com.FuelManager.FuelManagement.Repository.EquipmentRepo;
 import com.FuelManager.FuelManagement.Services.Authorization.EquipmentAuthorizer;
 import com.FuelManager.FuelManagement.Services.TransactionBuilder;
 import org.springframework.stereotype.Component;
@@ -8,24 +10,27 @@ import org.springframework.stereotype.Component;
 public class EquipmentPrompt implements CLIControl{
 
     IOControl ioControl;
-    EquipmentAuthorizer equipmentAuthorizer;
     OperatorPrompt operatorPrompt;
     TransactionBuilder transactionBuilder;
-    EquipmentPrompt(IOControl ioControl, EquipmentAuthorizer equipmentAuthorizer,OperatorPrompt operatorPrompt, TransactionBuilder transactionBuilder) {
+    EquipmentRepo equipmentRepo;
+    EquipmentPrompt(IOControl ioControl,
+                    EquipmentAuthorizer equipmentAuthorizer,
+                    OperatorPrompt operatorPrompt,
+                    TransactionBuilder transactionBuilder,
+                    EquipmentRepo equipmentRepo) {
         this.ioControl = ioControl;
-        this.equipmentAuthorizer = equipmentAuthorizer;
         this.transactionBuilder = transactionBuilder;
         this.operatorPrompt = operatorPrompt;
+        this.equipmentRepo = equipmentRepo;
     }
     @Override
     public void execute() {
         String equipmentID = ioControl.stringHandler("Enter Equipment ID");
-        if(equipmentAuthorizer.authorizeEquipment(equipmentID)) {
+        try {
             transactionBuilder.addEquipment(equipmentID);
             operatorPrompt.execute();
-        }
-        else {
-            ioControl.println("Invalid Equipment ID");
+        }catch (AuthorizationFailedException authorizationFailedException) {
+            ioControl.println("Transaction Failed");
         }
     }
 }

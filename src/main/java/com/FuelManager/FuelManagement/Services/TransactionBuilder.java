@@ -1,5 +1,6 @@
 package com.FuelManager.FuelManagement.Services;
 
+import com.FuelManager.FuelManagement.Model.Equipment;
 import com.FuelManager.FuelManagement.Model.Transaction;
 import org.springframework.stereotype.Service;
 
@@ -9,5 +10,6 @@ public interface TransactionBuilder {
     Transaction addOperator(String OperatorID);
     Transaction addEquipment(String EquipmentID);
     Transaction addFuelingPosition(int fuelingPositionID);
+    Transaction getTransaction();
     void clearTransaction();
 }

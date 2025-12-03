@@ -6,6 +6,8 @@ import com.FuelManager.FuelManagement.Services.TransactionBuilder;
 import com.FuelManager.FuelManagement.Services.TransactionManager;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class ActiveHoseSelection implements CLIControl{
     IOControl ioControl;
@@ -13,7 +15,11 @@ public class ActiveHoseSelection implements CLIControl{
     FuelingManager fuelingManager;
     TransactionBuilder transactionBuilder;
     TransactionManager transactionManager;
-    ActiveHoseSelection(IOControl ioControl, FuelingPositionManager fuelingPositionManager, FuelingManager fuelingManager, TransactionBuilder transactionBuilder, TransactionManager transactionManager) {
+    ActiveHoseSelection(IOControl ioControl,
+                        FuelingPositionManager fuelingPositionManager,
+                        FuelingManager fuelingManager,
+                        TransactionBuilder transactionBuilder,
+                        TransactionManager transactionManager) {
         this.ioControl = ioControl;
         this.fuelingPositionManager = fuelingPositionManager;
         this.fuelingManager = fuelingManager;
@@ -24,6 +30,7 @@ public class ActiveHoseSelection implements CLIControl{
     public void execute() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Please select position to activate\n");
+        List<Integer> availableHoses = fuelingPositionManager.getActiveFuelingPositionById();
         for(int fpId : fuelingPositionManager.getInactiveFuelingPositionById()) {
             stringBuilder.append("\t")
                     .append("(")
@@ -31,8 +38,8 @@ public class ActiveHoseSelection implements CLIControl{
                     .append(")");
         }
         int hoseSelection = ioControl.intHandler(stringBuilder.toString());
-        transactionManager.addActiveTransaction(transactionBuilder.addFuelingPosition(hoseSelection));
-        transactionBuilder.clearTransaction();
-        fuelingManager.startFueling(hoseSelection);
+            transactionManager.addActiveTransaction(transactionBuilder.addFuelingPosition(hoseSelection));
+            transactionBuilder.clearTransaction();
+            fuelingManager.startFueling(hoseSelection);
     }
 }
