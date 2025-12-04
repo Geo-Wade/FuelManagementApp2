@@ -25,9 +25,9 @@ public class StartStopFuelingControl implements CLIControl {
         int response;
         try {
             response = outputControl.intHandler("1) Start Fueling\t2) Stop Fueling");
-            if(response == 1) {
+            if (response == 1) {
                 equipmentPrompt.execute();
-            } else if(response == 2) {
+            } else if (response == 2) {
                 activeHoseSelection.execute();
             }
         } catch (InvalidInputException e) {

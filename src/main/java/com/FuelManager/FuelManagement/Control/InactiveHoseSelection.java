@@ -6,12 +6,13 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class InactiveHoseSelection implements CLIControl{
+public class InactiveHoseSelection implements CLIControl {
     FuelingManager fuelingManager;
     IOControl ioControl;
     FuelingPositionManager fuelingPositionManager;
     TransactionManager transactionManager;
     TransactionBuilder transactionBuilder;
+
     InactiveHoseSelection(FuelingManager fuelingManager,
                           IOControl ioControl,
                           FuelingPositionManager fuelingPositionManager,
@@ -23,12 +24,13 @@ public class InactiveHoseSelection implements CLIControl{
         this.transactionManager = transactionManager;
         this.transactionBuilder = transactionBuilder;
     }
+
     @Override
     public void execute() {
         boolean validSelection = false;
-        while(!validSelection) {
+        while (!validSelection) {
             List<Integer> hoseList = fuelingPositionManager.getInactiveFuelingPositionById();
-            if(!hoseList.isEmpty()) {
+            if (!hoseList.isEmpty()) {
                 int hoseSelection = ioControl.intHandler(buildHoseListString(hoseList));
                 if (hoseList.contains(hoseSelection)) {
                     fuelingManager.activateHose(hoseSelection);
@@ -38,13 +40,13 @@ public class InactiveHoseSelection implements CLIControl{
                 } else {
                     ioControl.println("Please Enter a valid Hose");
                 }
-            }
-            else {
+            } else {
                 ioControl.println("No hoses authorized for this equipment are available");
                 validSelection = true;
             }
         }
     }
+
     String buildHoseListString(List<Integer> hoseList) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Please select position to activate\n");

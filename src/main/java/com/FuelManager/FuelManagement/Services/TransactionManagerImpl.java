@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Service
-public class TransactionManagerImpl implements TransactionManager{
+public class TransactionManagerImpl implements TransactionManager {
     final private ConcurrentHashMap<Integer, Transaction> activeTransactions = new ConcurrentHashMap<>();
     TransactionRepo transactionRepo;
 
@@ -15,13 +15,14 @@ public class TransactionManagerImpl implements TransactionManager{
         this.transactionRepo = transactionRepo;
     }
 
-    public void addActiveTransaction (Transaction transaction) {
+    public void addActiveTransaction(Transaction transaction) {
         activeTransactions.put(transaction.getFuelingPosition(), transaction);
     }
 
     public Transaction getActiveTransaction(int fuelingPosition) {
         return activeTransactions.get(fuelingPosition);
     }
+
     public void finalizeActiveTransaction(int fuelingPosition) {
         transactionRepo.save(activeTransactions.remove(fuelingPosition));
     }

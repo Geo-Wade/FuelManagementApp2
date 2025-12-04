@@ -1,11 +1,11 @@
 package com.FuelManager.FuelManagement.Model;
 
 import jakarta.persistence.*;
+
 @Entity
 public class Product {
     @Id
     String productId;
-
 
 
     public String getProductName() {

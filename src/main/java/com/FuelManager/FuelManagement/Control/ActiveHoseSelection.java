@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class ActiveHoseSelection implements CLIControl{
+public class ActiveHoseSelection implements CLIControl {
     IOControl ioControl;
     FuelingPositionManager fuelingPositionManager;
     FuelingManager fuelingManager;
@@ -20,10 +20,11 @@ public class ActiveHoseSelection implements CLIControl{
         this.fuelingManager = fuelingManager;
 
     }
+
     @Override
     public void execute() {
         List<Integer> hoseList = fuelingPositionManager.getActiveFuelingPositionById();
-        if(!hoseList.isEmpty()) {
+        if (!hoseList.isEmpty()) {
             int hoseSelection;
             boolean validSelection = false;
             while (!validSelection) {
@@ -35,8 +36,7 @@ public class ActiveHoseSelection implements CLIControl{
                     ioControl.println("Please select a valid hose");
                 }
             }
-        }
-        else {
+        } else {
             ioControl.println("There are no hoses currently in use");
         }
     }
@@ -44,7 +44,7 @@ public class ActiveHoseSelection implements CLIControl{
     String printHoseSelection(List<Integer> availableHoses) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Please select position to deactivate\n");
-        for(int fpId : availableHoses) {
+        for (int fpId : availableHoses) {
             stringBuilder.append("\t")
                     .append("(")
                     .append(fpId)

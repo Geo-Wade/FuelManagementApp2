@@ -9,10 +9,12 @@ import java.time.LocalDateTime;
 public class TransactionCompletedImpl implements TransactionCompleted {
     TransactionRepo transactionRepo;
     TransactionManager transactionManager;
+
     TransactionCompletedImpl(TransactionRepo transactionRepo, TransactionManager transactionManager) {
         this.transactionRepo = transactionRepo;
         this.transactionManager = transactionManager;
     }
+
     public void completeAndSaveTransaction(int fuelingPosition, double amountFueled) {
         System.out.println(transactionManager.getActiveTransaction(fuelingPosition));
         transactionManager.getActiveTransaction(fuelingPosition).setAmountFueled(amountFueled);

@@ -6,9 +6,14 @@ import org.springframework.stereotype.Service;
 @Service
 public interface TransactionBuilder {
     Transaction startTransaction();
+
     Transaction addOperator(String operator);
+
     Transaction addEquipment(String EquipmentID);
+
     Transaction addFuelingPosition(int fuelingPositionID);
+
     Transaction getTransaction();
+
     void clearTransaction();
 }

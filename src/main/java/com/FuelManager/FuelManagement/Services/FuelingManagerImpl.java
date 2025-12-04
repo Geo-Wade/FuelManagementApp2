@@ -8,10 +8,12 @@ public class FuelingManagerImpl implements FuelingManager {
 
     ExternalFuelTaskManager externalFuelingTaskManager;
     TransactionManager transactionManager;
+
     FuelingManagerImpl(ExternalFuelTaskManager externalFuelingTaskManager, TransactionManager transactionManager) {
         this.externalFuelingTaskManager = externalFuelingTaskManager;
         this.transactionManager = transactionManager;
     }
+
     public void activateHose(int fuelingPositionId) {
 
         externalFuelingTaskManager.startFueling(fuelingPositionId);

@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    int TransactionID;
+    int transactionID;
     LocalDateTime transactionTime;
     @ManyToOne
     Operator operator;
@@ -58,17 +58,17 @@ public class Transaction {
     }
 
     public int getTransactionID() {
-        return TransactionID;
+        return transactionID;
     }
 
     public void setTransactionID(int transactionID) {
-        TransactionID = transactionID;
+        transactionID = transactionID;
     }
 
     @Override
     public String toString() {
         return "Transaction{" +
-                "TransactionID=" + TransactionID +
+                "TransactionID=" + transactionID +
                 ", transactionTime=" + transactionTime +
                 ", operatorID='" + operator + '\'' +
                 ", equipmentID='" + equipment + '\'' +
