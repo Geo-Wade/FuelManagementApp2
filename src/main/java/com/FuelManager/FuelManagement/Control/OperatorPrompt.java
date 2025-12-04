@@ -1,33 +1,41 @@
 package com.FuelManager.FuelManagement.Control;
 
+import com.FuelManager.FuelManagement.Exceptions.AuthorizationFailedException;
+import com.FuelManager.FuelManagement.Model.Operator;
+import com.FuelManager.FuelManagement.Repository.OperatorRepo;
 import com.FuelManager.FuelManagement.Services.Authorization.OperatorAuthorizer;
 import com.FuelManager.FuelManagement.Services.TransactionBuilder;
 import org.springframework.stereotype.Component;
+
+import java.util.Optional;
 
 @Component
 public class OperatorPrompt implements CLIControl {
     IOControl ioControl;
     OperatorAuthorizer operatorAuthorizer;
-    ActiveHoseSelection activeHoseSelection;
+    InactiveHoseSelection inactiveHoseSelection;
     TransactionBuilder transactionBuilder;
+    OperatorRepo operatorRepo;
 
-    OperatorPrompt(IOControl ioControl, OperatorAuthorizer operatorAuthorizer, ActiveHoseSelection activeHoseSelection, TransactionBuilder transactionBuilder) {
+    OperatorPrompt(IOControl ioControl,
+                   OperatorAuthorizer operatorAuthorizer,
+                   InactiveHoseSelection inactiveHoseSelection,
+                   TransactionBuilder transactionBuilder,
+                   OperatorRepo operatorRepo) {
         this.ioControl = ioControl;
         this.operatorAuthorizer = operatorAuthorizer;
-        this.activeHoseSelection = activeHoseSelection;
+        this.inactiveHoseSelection = inactiveHoseSelection;
         this.transactionBuilder = transactionBuilder;
+        this.operatorRepo = operatorRepo;
     }
 
     @Override
     public void execute() {
-        String operatorID = ioControl.stringHandler("Enter Operator ID");
-        if(operatorAuthorizer.authorizeOperator(operatorID.toUpperCase())) {
-            System.out.println("Authorized for operator" + operatorID);
-            transactionBuilder.addOperator(operatorID);
-            activeHoseSelection.execute();
-        }
-        else {
-            ioControl.println("Invalid Operator ID");
+        try {
+            transactionBuilder.addOperator(ioControl.stringHandler("Enter Operator ID"));
+            inactiveHoseSelection.execute();
+        } catch (AuthorizationFailedException authorizationFailedException) {
+            ioControl.println("Failed to Authorize");
         }
     }
 }

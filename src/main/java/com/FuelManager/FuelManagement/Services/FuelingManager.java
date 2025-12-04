@@ -4,6 +4,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface FuelingManager {
-    void startFueling(int fuelingPosition);
-    void stopFueling(int fuelingPosition);
+    void activateHose(int fuelingPositionId);
+    void inactivateHose(int fuelingPositionId);
 }

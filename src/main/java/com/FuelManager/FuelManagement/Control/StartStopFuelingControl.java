@@ -10,14 +10,14 @@ public class StartStopFuelingControl implements CLIControl {
 
     IOControl outputControl;
     FuelingManager fuelingManager;
-    InactiveHoseSelection inactiveHoseSelection;
+    ActiveHoseSelection activeHoseSelection;
     EquipmentPrompt equipmentPrompt;
 
-    public StartStopFuelingControl(IOControl outputControl, FuelingManager fuelingManager, EquipmentPrompt equipmentPrompt, InactiveHoseSelection inactiveHoseSelection) {
+    public StartStopFuelingControl(IOControl outputControl, FuelingManager fuelingManager, EquipmentPrompt equipmentPrompt, ActiveHoseSelection activeHoseSelection) {
         this.outputControl = outputControl;
         this.equipmentPrompt = equipmentPrompt;
         this.fuelingManager = fuelingManager;
-        this.inactiveHoseSelection = inactiveHoseSelection;
+        this.activeHoseSelection = activeHoseSelection;
     }
 
     @Override
@@ -28,7 +28,7 @@ public class StartStopFuelingControl implements CLIControl {
             if(response == 1) {
                 equipmentPrompt.execute();
             } else if(response == 2) {
-                inactiveHoseSelection.execute();
+                activeHoseSelection.execute();
             }
         } catch (InvalidInputException e) {
             e.printStackTrace();

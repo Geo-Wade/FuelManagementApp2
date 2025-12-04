@@ -10,8 +10,9 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     int TransactionID;
     LocalDateTime transactionTime;
-    String operatorID;
-    @OneToOne
+    @ManyToOne
+    Operator operator;
+    @ManyToOne
     Equipment equipment;
     int fuelingPosition;
     double amountFueled;
@@ -24,12 +25,12 @@ public class Transaction {
         this.transactionTime = transactionTime;
     }
 
-    public String getOperatorID() {
-        return operatorID;
+    public Operator getOperator() {
+        return operator;
     }
 
-    public void setOperatorID(String operatorID) {
-        this.operatorID = operatorID;
+    public void setOperator(Operator operatorID) {
+        this.operator = operatorID;
     }
 
     public Equipment getEquipment() {
@@ -69,7 +70,7 @@ public class Transaction {
         return "Transaction{" +
                 "TransactionID=" + TransactionID +
                 ", transactionTime=" + transactionTime +
-                ", operatorID='" + operatorID + '\'' +
+                ", operatorID='" + operator + '\'' +
                 ", equipmentID='" + equipment + '\'' +
                 ", fuelingPosition=" + fuelingPosition +
                 ", amountFueled=" + amountFueled +

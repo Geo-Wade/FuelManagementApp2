@@ -41,23 +41,28 @@ public class FuelManagementApplication {
 		productRepo.save(p2);
 
 		FuelingPosition fp1 = new FuelingPosition();
-		fp1.setFuelingPositionNumber(1);
-		fp1.setFuelingPositionName("Diesel 1");
 		fp1.setProduct(p1);
+		fp1.setFuelingPositionNumber(1);
+		fp1.setFuelingPositionName("Diesel");
 		fuelingPositionRepo.save(fp1);
 
 		FuelingPosition fp2 = new FuelingPosition();
-		fp2.setFuelingPositionNumber(1);
-		fp2.setFuelingPositionName("Diesel 1");
-		fp2.setProduct(p1);
+		fp2.setProduct(p2);
+		fp2.setFuelingPositionNumber(2);
+		fp2.setFuelingPositionName("Diesel");
 		fuelingPositionRepo.save(fp2);
 
 		FuelingPosition fp3 = new FuelingPosition();
-		fp3.setFuelingPositionNumber(1);
-		fp3.setFuelingPositionName("Diesel 1");
 		fp3.setProduct(p1);
+		fp3.setFuelingPositionNumber(3);
+		fp3.setFuelingPositionName("Diesel");
 		fuelingPositionRepo.save(fp3);
 
+		FuelingPosition fp4 = new FuelingPosition();
+		fp4.setProduct(p2);
+		fp4.setFuelingPositionNumber(4);
+		fp4.setFuelingPositionName("Diesel");
+		fuelingPositionRepo.save(fp4);
 
 		Equipment e1 = new Equipment();
 		e1.setId("1234");
@@ -65,8 +70,17 @@ public class FuelManagementApplication {
 		e1.setEquipmentModel("F150");
 		e1.setEquipmentYear(2025);
 		e1.setEquipmentOdometer(25000);
-		e1.setProducts(List.of(p1));
+		e1.setProducts(List.of(p2));
 		equipmentRepo.save(e1);
+
+		Equipment e2 = new Equipment();
+		e2.setId("5678");
+		e2.setEquipmentMake("Dodge");
+		e2.setEquipmentModel("Ram");
+		e2.setEquipmentYear(2023);
+		e2.setEquipmentOdometer(50000);
+		e2.setProducts(List.of(p1));
+		equipmentRepo.save(e2);
 
 		Operator o1 = new Operator();
 		o1.setOperatorID("4321");

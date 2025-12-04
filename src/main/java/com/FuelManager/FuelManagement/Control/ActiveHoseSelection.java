@@ -13,33 +13,45 @@ public class ActiveHoseSelection implements CLIControl{
     IOControl ioControl;
     FuelingPositionManager fuelingPositionManager;
     FuelingManager fuelingManager;
-    TransactionBuilder transactionBuilder;
-    TransactionManager transactionManager;
+
     ActiveHoseSelection(IOControl ioControl,
                         FuelingPositionManager fuelingPositionManager,
-                        FuelingManager fuelingManager,
-                        TransactionBuilder transactionBuilder,
-                        TransactionManager transactionManager) {
+                        FuelingManager fuelingManager) {
         this.ioControl = ioControl;
         this.fuelingPositionManager = fuelingPositionManager;
         this.fuelingManager = fuelingManager;
-        this.transactionBuilder = transactionBuilder;
-        this.transactionManager = transactionManager;
+
     }
     @Override
     public void execute() {
+        List<Integer> hoseList = fuelingPositionManager.getActiveFuelingPositionById();
+        if(!hoseList.isEmpty()) {
+            int hoseSelection;
+            boolean validSelection = false;
+            while (!validSelection) {
+                hoseSelection = ioControl.intHandler(printHoseSelection(hoseList));
+                if (hoseList.contains(hoseSelection)) {
+                    fuelingManager.inactivateHose(hoseSelection);
+                    validSelection = true;
+                } else {
+                    ioControl.println("Please select a valid hose");
+                }
+            }
+        }
+        else {
+            ioControl.println("There are no hoses currently in use");
+        }
+    }
+
+    String printHoseSelection(List<Integer> availableHoses) {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Please select position to activate\n");
-        List<Integer> availableHoses = fuelingPositionManager.getActiveFuelingPositionById();
-        for(int fpId : fuelingPositionManager.getInactiveFuelingPositionById()) {
+        stringBuilder.append("Please select position to deactivate\n");
+        for(int fpId : availableHoses) {
             stringBuilder.append("\t")
                     .append("(")
                     .append(fpId)
                     .append(")");
         }
-        int hoseSelection = ioControl.intHandler(stringBuilder.toString());
-            transactionManager.addActiveTransaction(transactionBuilder.addFuelingPosition(hoseSelection));
-            transactionBuilder.clearTransaction();
-            fuelingManager.startFueling(hoseSelection);
+        return stringBuilder.toString();
     }
 }
