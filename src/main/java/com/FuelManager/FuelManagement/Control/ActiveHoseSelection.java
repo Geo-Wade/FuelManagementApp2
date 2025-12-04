@@ -1,7 +1,7 @@
 package com.FuelManager.FuelManagement.Control;
 
 import com.FuelManager.FuelManagement.Services.FuelingManager;
-import com.FuelManager.FuelManagement.Services.FuelingPositionManager;;
+import com.FuelManager.FuelManagement.Services.FuelingPositionManager;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
