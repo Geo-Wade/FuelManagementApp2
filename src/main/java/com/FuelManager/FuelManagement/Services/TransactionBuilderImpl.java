@@ -2,7 +2,6 @@ package com.FuelManager.FuelManagement.Services;
 
 import com.FuelManager.FuelManagement.Exceptions.AuthorizationFailedException;
 import com.FuelManager.FuelManagement.Model.Equipment;
-import com.FuelManager.FuelManagement.Model.Operator;
 import com.FuelManager.FuelManagement.Model.Transaction;
 import com.FuelManager.FuelManagement.Repository.EquipmentRepo;
 import com.FuelManager.FuelManagement.Repository.OperatorRepo;

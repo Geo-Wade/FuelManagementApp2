@@ -1,13 +1,10 @@
 package com.FuelManager.FuelManagement.Control;
 
 import com.FuelManager.FuelManagement.Exceptions.AuthorizationFailedException;
-import com.FuelManager.FuelManagement.Model.Operator;
 import com.FuelManager.FuelManagement.Repository.OperatorRepo;
 import com.FuelManager.FuelManagement.Services.Authorization.OperatorAuthorizer;
 import com.FuelManager.FuelManagement.Services.TransactionBuilder;
 import org.springframework.stereotype.Component;
-
-import java.util.Optional;
 
 @Component
 public class OperatorPrompt implements CLIControl {

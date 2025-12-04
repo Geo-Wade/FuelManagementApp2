@@ -1,12 +1,9 @@
 package com.FuelManager.FuelManagement.Services;
 
-import com.FuelManager.FuelManagement.Exceptions.AuthorizationFailedException;
 import com.FuelManager.FuelManagement.Model.FuelingPosition;
 import com.FuelManager.FuelManagement.Model.Product;
 import com.FuelManager.FuelManagement.Repository.FuelingPositionRepo;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
