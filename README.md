@@ -1,7 +1,7 @@
-Application Simulates the process of authorizing for fuel, and fueling 
+Application Simulates the process of authorizing for fuel, and fueling.  
 Run the project from the FuelManagementApplication.java file with the main method. 
-You will be prompted to start, or stop fueling
-start fueling -> equipment ID prompt -> Operator Id prompt -> Hose selection 
+You will be prompted to start, or stop fueling. 
+Start fueling -> equipment ID prompt -> Operator Id prompt -> Hose selection 
 You can access the h2-console by visiting http://localhost:8080/h2-console
 - Driver Class org.h2.Driver
 - JDBC URL jdbc:h2:mem:testdb
