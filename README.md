@@ -6,7 +6,8 @@ You can access the h2-console by visiting http://localhost:8080/h2-console
 - Driver Class org.h2.Driver
 - JDBC URL jdbc:h2:mem:testdb
 - username: sa
-- no password
+- no password.
+  
 1111 and 2222 can be used for Equipment ID.
 Using each will highlight the available hoses alligned with each equpiment
 9999 is the only operator ID
