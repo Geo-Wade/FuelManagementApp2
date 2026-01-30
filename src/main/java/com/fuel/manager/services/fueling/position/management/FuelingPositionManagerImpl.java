@@ -45,7 +45,8 @@ public class FuelingPositionManagerImpl implements FuelingPositionManager {
                     .map(FuelingPosition::getFuelingPositionNumber)
                     .filter(Predicate.not(hoseN -> activeTransactionRepo.findAll().stream()
                             .map(ActiveTransaction::getTransactions)
-                            .map(Transaction::getFuelingPosition).anyMatch(x->x.equals(hoseN))))
+                            .map(Transaction::getFuelingPosition)
+                                          .anyMatch(x->x.equals(hoseN))))
                     .toList();
 
         } catch (Exception e) {
